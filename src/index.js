@@ -1,29 +1,24 @@
 import "dotenv/config";
+import { fetchProducts } from "./fetch-products.js";
+import { mapProductsToFeedItems } from "./map-products.js";
 import { buildXml } from "./build-xml.js";
 
 async function main() {
-  const demoItems = [
-    {
-      id: "teste-001",
-      title: "Produto de teste",
-      description: "Produto usado apenas para validar a geração do XML",
-      availability: "in stock",
-      condition: "new",
-      price: "99.90",
-      salePrice: null,
-      link: "https://www.sualoja.com.br/produtos/produto-teste",
-      imageLink: "https://via.placeholder.com/1200x1200.png?text=Produto+Teste",
-      brand: process.env.DEFAULT_BRAND || "Minha Marca",
-      itemGroupId: null
-    }
-  ];
+  console.log("Buscando produtos da Nuvemshop...");
+  const products = await fetchProducts();
+  console.log(`Produtos recebidos: ${products.length}`);
 
-  console.log("Gerando XML de teste...");
-  const outputFile = await buildXml(demoItems);
-  console.log(`Arquivo gerado com sucesso em: ${outputFile}`);
+  console.log("Mapeando produtos para o feed...");
+  const items = mapProductsToFeedItems(products);
+  console.log(`Itens válidos para o feed: ${items.length}`);
+
+  console.log("Gerando XML...");
+  const outputFile = await buildXml(items);
+
+  console.log(`Feed gerado com sucesso em: ${outputFile}`);
 }
 
 main().catch((error) => {
-  console.error("Erro ao gerar XML:", error);
+  console.error("Erro ao gerar feed:", error);
   process.exit(1);
 });
