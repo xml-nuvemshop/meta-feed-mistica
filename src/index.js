@@ -6,11 +6,17 @@ import { buildXml } from "./build-xml.js";
 async function main() {
   console.log("Buscando produtos da Nuvemshop...");
   const products = await fetchProducts();
-  console.log(`Produtos recebidos: ${products.length}`);
+  const productCount = Array.isArray(products) ? products.length : 0;
+  console.log(`Produtos recebidos: ${productCount}`);
 
   console.log("Mapeando produtos para o feed...");
-  const items = mapProductsToFeedItems(products);
+  const items = mapProductsToFeedItems(Array.isArray(products) ? products : []);
   console.log(`Itens válidos para o feed: ${items.length}`);
+
+  const itemsWithAdditionalImages = items.filter(
+    (item) => Array.isArray(item.additionalImageLinks) && item.additionalImageLinks.length > 0
+  ).length;
+  console.log(`Itens com imagens adicionais: ${itemsWithAdditionalImages}`);
 
   console.log("Gerando XML...");
   const outputFile = await buildXml(items);
