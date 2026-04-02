@@ -46,9 +46,11 @@ function buildProductUrl(handle) {
     throw new Error("STORE_URL não definido.");
   }
 
-  if (!handle) return storeUrl;
+  const normalizedHandle = getLocalizedValue(handle);
 
-  return `${storeUrl}/produtos/${handle}`;
+  if (!normalizedHandle) return storeUrl;
+
+  return `${storeUrl}/produtos/${normalizedHandle}`;
 }
 
 function getMainImage(product, variant) {
