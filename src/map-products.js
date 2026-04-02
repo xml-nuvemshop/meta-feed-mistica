@@ -53,6 +53,14 @@ function buildProductUrl(handle) {
   return `${storeUrl}/produtos/${normalizedHandle}`;
 }
 
+function buildVariantUrl(productLink, variant) {
+  const variantId = firstDefined(variant?.id, variant?.variant_id);
+  if (!productLink || !variantId) return productLink;
+
+  const separator = productLink.includes("?") ? "&" : "?";
+  return `${productLink}${separator}variant=${variantId}`;
+}
+
 function getMainImage(product, variant) {
   const variantImage = firstDefined(
     variant?.image?.src,
@@ -71,6 +79,45 @@ function getMainImage(product, variant) {
     product.featured_image?.src,
     product.featured_image?.url
   );
+}
+
+function collectAllImages(product, variant) {
+  const images = [];
+
+  const pushIfString = (value) => {
+    if (typeof value === "string" && value.trim()) {
+      images.push(value.trim());
+    }
+  };
+
+  pushIfString(variant?.image?.src);
+  pushIfString(variant?.image?.url);
+  pushIfString(variant?.image?.https);
+
+  if (Array.isArray(variant?.images)) {
+    for (const img of variant.images) {
+      pushIfString(img?.src);
+      pushIfString(img?.url);
+      pushIfString(img?.https);
+    }
+  }
+
+  if (Array.isArray(product?.images)) {
+    for (const img of product.images) {
+      pushIfString(img?.src);
+      pushIfString(img?.url);
+      pushIfString(img?.https);
+    }
+  }
+
+  pushIfString(product?.featured_image?.src);
+  pushIfString(product?.featured_image?.url);
+
+  return [...new Set(images)];
+}
+
+function getAdditionalImageLinks(product, variant, mainImage) {
+  return collectAllImages(product, variant).filter((image) => image !== mainImage);
 }
 
 function buildVariantTitle(productName, variant) {
@@ -94,7 +141,7 @@ function buildVariantTitle(productName, variant) {
   const uniqueParts = [...new Set(parts.filter(Boolean))];
 
   return uniqueParts.length
-    ? `${productName} - ${uniqueParts.join(" / ")}`
+    ? `${productName} (${uniqueParts.join(" / ")})`
     : productName;
 }
 
@@ -123,7 +170,7 @@ function buildBaseItem(product) {
   const brand = getBrand(product);
 
   return {
-    baseId: String(product.id),
+    productId: String(product.id),
     title: name,
     description,
     link,
@@ -135,13 +182,14 @@ function buildBaseItem(product) {
 
 function mapSimpleProduct(product, baseItem) {
   const imageLink = getMainImage(product, null);
+  const additionalImageLinks = getAdditionalImageLinks(product, null, imageLink);
   const price = normalizePrice(firstDefined(product.promotional_price, product.price));
   const stock = firstDefined(product.stock, product.inventory, 0);
 
   if (!baseItem.title || !imageLink || !price) return null;
 
   return {
-    id: baseItem.baseId,
+    id: baseItem.productId,
     title: baseItem.title,
     description: baseItem.description,
     availability: normalizeAvailability(stock),
@@ -150,6 +198,7 @@ function mapSimpleProduct(product, baseItem) {
     salePrice: product.promotional_price ? normalizePrice(product.promotional_price) : null,
     link: baseItem.link,
     imageLink,
+    additionalImageLinks,
     brand: baseItem.brand,
     itemGroupId: null
   };
@@ -157,21 +206,25 @@ function mapSimpleProduct(product, baseItem) {
 
 function mapVariantProduct(product, baseItem, variant) {
   const imageLink = getMainImage(product, variant);
+  const additionalImageLinks = getAdditionalImageLinks(product, variant, imageLink);
   const price = normalizePrice(firstDefined(variant.price, product.price));
   const stock = firstDefined(variant.stock, variant.inventory, 0);
 
   if (!imageLink || !price) return null;
 
+  const variantId = firstDefined(variant.id, variant.variant_id);
+
   return {
-    id: String(firstDefined(variant.sku, variant.id, `${product.id}-variant`)),
+    id: String(variantId ?? `${product.id}-variant`),
     title: buildVariantTitle(baseItem.title, variant),
     description: baseItem.description,
     availability: normalizeAvailability(stock),
     condition: baseItem.condition,
     price,
     salePrice: variant.promotional_price ? normalizePrice(variant.promotional_price) : null,
-    link: baseItem.link,
+    link: buildVariantUrl(baseItem.link, variant),
     imageLink,
+    additionalImageLinks,
     brand: baseItem.brand,
     itemGroupId: baseItem.itemGroupId
   };
