@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+  <channel>
+    <title>Minha Loja</title>
+    <link>https://www.exemplo.com.br</link>
+    <description>Feed de produtos de Minha Loja para Meta</description>
+    <item>
+      <g:id>teste-001</g:id>
+      <g:title>Produto de teste</g:title>
+      <g:description>Produto usado apenas para validar a geração do XML</g:description>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>99.90 BRL</g:price>
+      
+      <g:link>https://www.sualoja.com.br/produtos/produto-teste</g:link>
+      <g:image_link>https://via.placeholder.com/1200x1200.png?text=Produto+Teste</g:image_link>
+      <g:brand>Minha Marca</g:brand>
+      
+    </item>
+  </channel>
+</rss>
