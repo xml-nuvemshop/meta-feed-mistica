@@ -1304,5 +1304,18 @@
       <g:brand>Loja da Mistica</g:brand>
       <g:item_group_id>335059732</g:item_group_id>
     </item>
+    <item>
+      <g:id>1496588311</g:id>
+      <g:title>Manteiga de Cacau</g:title>
+      <g:description></g:description>
+      <g:availability>in stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:price>19.90 BRL</g:price>
+      <g:sale_price>24.00 BRL</g:sale_price>
+      <g:link>https://www.alojadamistica.com/produtos/manteigadecacau?variant=1496588311</g:link>
+      <g:image_link>https://acdn-us.mitiendanube.com/stores/002/542/588/products/whatsapp-image-2026-04-08-at-11-06-48-999463e03d5afcd62017756573633187-1024-1024.jpg</g:image_link>
+      <g:brand>Loja da Mistica</g:brand>
+      <g:item_group_id>336579034</g:item_group_id>
+    </item>
   </channel>
 </rss>
