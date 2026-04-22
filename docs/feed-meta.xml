@@ -570,7 +570,7 @@
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>84.18 BRL</g:price>
-      <g:sale_price>67.00 BRL</g:sale_price>
+      <g:sale_price>39.90 BRL</g:sale_price>
       <g:link>https://www.alojadamistica.com/produtos/perfume-de-bolsa-rosa-negra-10ml-1-unidade-trfqs?variant=1426431064</g:link>
       <g:image_link>https://acdn-us.mitiendanube.com/stores/002/542/588/products/rosa-negra-10ml-a89e5551a2baee83cf17635909349092-1024-1024.png</g:image_link>
       <g:brand>Mística</g:brand>
@@ -921,7 +921,7 @@
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>84.18 BRL</g:price>
-      <g:sale_price>67.00 BRL</g:sale_price>
+      <g:sale_price>39.90 BRL</g:sale_price>
       <g:link>https://www.alojadamistica.com/produtos/perfume-de-bolsa-rosa-vermelha-10ml-1-unidade-ie8up?variant=1426451823</g:link>
       <g:image_link>https://acdn-us.mitiendanube.com/stores/002/542/588/products/rosa-vermelha-10ml-c73fd45be97cd7102c17635914950496-1024-1024.png</g:image_link>
       <g:brand>Mística</g:brand>
@@ -934,7 +934,7 @@
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>84.18 BRL</g:price>
-      <g:sale_price>67.00 BRL</g:sale_price>
+      <g:sale_price>39.90 BRL</g:sale_price>
       <g:link>https://www.alojadamistica.com/produtos/perfume-de-bolsa-rosa-amarela-10ml-1-unidade-fjors?variant=1426452373</g:link>
       <g:image_link>https://acdn-us.mitiendanube.com/stores/002/542/588/products/rosa-amarela-10ml-5e64d473882881beaa17635915490972-1024-1024.png</g:image_link>
       <g:brand>Mística</g:brand>
@@ -947,7 +947,7 @@
       <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>84.18 BRL</g:price>
-      <g:sale_price>67.00 BRL</g:sale_price>
+      <g:sale_price>39.90 BRL</g:sale_price>
       <g:link>https://www.alojadamistica.com/produtos/perfume-de-bolsa-rosa-branca-10ml-1-unidade-b3pps?variant=1426451323</g:link>
       <g:image_link>https://acdn-us.mitiendanube.com/stores/002/542/588/products/rosa-branca-10ml-079b261ae4d0eb691f17635917255747-1024-1024.png</g:image_link>
       <g:brand>Mística</g:brand>
@@ -1188,19 +1188,6 @@
       <g:item_group_id>325917833</g:item_group_id>
     </item>
     <item>
-      <g:id>1454883490</g:id>
-      <g:title>Sacola para Presente</g:title>
-      <g:description></g:description>
-      <g:availability>in stock</g:availability>
-      <g:condition>new</g:condition>
-      <g:price>7.00 BRL</g:price>
-      
-      <g:link>https://www.alojadamistica.com/produtos/sacola-para-presente-14g19?variant=1454883490</g:link>
-      <g:image_link>https://acdn-us.mitiendanube.com/stores/002/542/588/products/productwrap1771871624215-5ba873fb17aab3a1b117718716259878-1024-1024.jpg</g:image_link>
-      <g:brand>Loja da Mistica</g:brand>
-      <g:item_group_id>327155279</g:item_group_id>
-    </item>
-    <item>
       <g:id>1468668983</g:id>
       <g:title>Mini Vela Aromática</g:title>
       <g:description></g:description>
@@ -1243,7 +1230,7 @@
       <g:id>1496588311</g:id>
       <g:title>Manteiga de Cacau</g:title>
       <g:description></g:description>
-      <g:availability>out of stock</g:availability>
+      <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>24.00 BRL</g:price>
       <g:sale_price>19.90 BRL</g:sale_price>
