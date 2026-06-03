@@ -3,15 +3,8 @@ const API_BASE = "https://api.nuvemshop.com.br/v1";
 function getHeaders() {
   const token = process.env.NUVEMSHOP_ACCESS_TOKEN;
   const userAgent = process.env.NUVEMSHOP_USER_AGENT;
-
-  if (!token) {
-    throw new Error("NUVEMSHOP_ACCESS_TOKEN não definido.");
-  }
-
-  if (!userAgent) {
-    throw new Error("NUVEMSHOP_USER_AGENT não definido.");
-  }
-
+  if (!token) throw new Error("NUVEMSHOP_ACCESS_TOKEN não definido.");
+  if (!userAgent) throw new Error("NUVEMSHOP_USER_AGENT não definido.");
   return {
     Authentication: `bearer ${token}`,
     "User-Agent": userAgent,
@@ -21,11 +14,7 @@ function getHeaders() {
 
 function getStoreId() {
   const storeId = process.env.NUVEMSHOP_STORE_ID;
-
-  if (!storeId) {
-    throw new Error("NUVEMSHOP_STORE_ID não definido.");
-  }
-
+  if (!storeId) throw new Error("NUVEMSHOP_STORE_ID não definido.");
   return storeId;
 }
 
@@ -34,6 +23,10 @@ async function requestJson(url) {
     method: "GET",
     headers: getHeaders()
   });
+
+  if (response.status === 404) {
+    return null; // fim da paginação
+  }
 
   if (!response.ok) {
     const body = await response.text();
@@ -46,7 +39,6 @@ async function requestJson(url) {
 export async function fetchProducts() {
   const storeId = getStoreId();
   const pageSize = Number(process.env.PAGE_SIZE || 200);
-
   let page = 1;
   let allProducts = [];
 
@@ -54,7 +46,7 @@ export async function fetchProducts() {
     const url = `${API_BASE}/${storeId}/products?page=${page}&per_page=${pageSize}`;
     const batch = await requestJson(url);
 
-    if (!Array.isArray(batch) || batch.length === 0) {
+    if (batch === null || !Array.isArray(batch) || batch.length === 0) {
       break;
     }
 
