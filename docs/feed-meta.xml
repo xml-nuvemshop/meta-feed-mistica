@@ -1279,19 +1279,6 @@
       <g:item_group_id>336579034</g:item_group_id>
     </item>
     <item>
-      <g:id>1500884885</g:id>
-      <g:title>Banho de Renovação (Poção de Páscoa)</g:title>
-      <g:description>Banho voltado para: Limpeza &amp;bull; Recome&amp;ccedil;o &amp;bull; Abertura de caminhos</g:description>
-      <g:availability>out of stock</g:availability>
-      <g:condition>new</g:condition>
-      <g:price>15.00 BRL</g:price>
-      
-      <g:link>https://www.alojadamistica.com/produtos/banhoderenovacao?variant=1500884885</g:link>
-      <g:image_link>https://acdn-us.mitiendanube.com/stores/002/542/588/products/whatsapp-image-2026-04-13-at-11-09-52-8c37cd808bc16ba31117760894698807-1024-1024.jpg</g:image_link>
-      <g:brand>Loja da Mistica</g:brand>
-      <g:item_group_id>337643413</g:item_group_id>
-    </item>
-    <item>
       <g:id>1515440460</g:id>
       <g:title>Marca Livro Mistica</g:title>
       <g:description></g:description>
@@ -1321,7 +1308,7 @@
       <g:id>1536346129</g:id>
       <g:title>Cristal Intuitivo</g:title>
       <g:description></g:description>
-      <g:availability>out of stock</g:availability>
+      <g:availability>in stock</g:availability>
       <g:condition>new</g:condition>
       <g:price>10.00 BRL</g:price>
       
